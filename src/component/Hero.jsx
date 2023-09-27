@@ -9,7 +9,6 @@ import {
 const Hero = () => {
   const dispatch = useDispatch();
   const postlist = useSelector((state) => state);
-  console.log(postlist, "postlist");
   const firstApi = postlist.FirstReducrCase;
   const secondApi = postlist.SecondReducerCase.data;
   const [value, setValue] = useState({});
@@ -24,8 +23,6 @@ const Hero = () => {
     dispatch(SecondApiActionList());
     dispatch(postCallActionList(data));
   }, []);
-
-  console.log(secondApi, "secondApi");
 
   return (
     <div>

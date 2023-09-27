@@ -42,7 +42,6 @@ export const SecondApiAction = (data) => ({
 export const SecondApiActionList = (data) => async (dispatch) => {
   try {
     const response = await SecondDataApi();
-    console.log(response, "response");
     dispatch(SecondApiAction(response));
   } catch (error) {}
 };
@@ -55,8 +54,6 @@ export const secondPostCallActionList = (data) => async (dispatch) => {
 };
 
 export function postSecondCallAction(data) {
-  console.log(data, "response ............");
-
   return {
     type: POST_LIST_SIGNUP,
     data: data,

@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { postCallActionList } from "../action/Actions";
 
 const FormTrial = () => {
   const initialValue = {
@@ -8,10 +10,26 @@ const FormTrial = () => {
     message: "",
   };
   const [formData, setFormData] = useState(initialValue);
+  const [formValue, setFormValue] = useState({});
+
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    console.log("dfghj");
+    if (
+      formData.name &&
+      formData.email &&
+      formData.address &&
+      formData.message
+    ) {
+      alert("successfully sent");
+    }
   };
+  const dispatch = useDispatch();
+  const postlist = useSelector((state) => state);
+
+  useEffect(() => {
+    setFormValue(formData);
+    dispatch(postCallActionList(formData));
+  }, []);
   return (
     <div>
       <div className="container">
@@ -28,6 +46,7 @@ const FormTrial = () => {
                 }
                 type="text"
                 placeholder="Name"
+                value={formData.name}
               />
               <input
                 onChange={(e) =>
@@ -35,6 +54,7 @@ const FormTrial = () => {
                 }
                 type="email"
                 placeholder="Email"
+                value={formData.email}
               />
               <input
                 onChange={(e) =>
@@ -42,6 +62,7 @@ const FormTrial = () => {
                 }
                 type="text"
                 placeholder="Address"
+                value={formData.address}
               />
               <input
                 onChange={(e) =>
@@ -49,6 +70,7 @@ const FormTrial = () => {
                 }
                 type="text"
                 placeholder="message"
+                value={formData.message}
               />
               <button>Submit</button>
             </form>
