@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { postCallActionList } from "../action/Actions";
-import { SecondDataApi } from "../apis/Api";
+import { SecondDataApi, SecondPostApi } from "../apis/Api";
 
 const FormTrial = () => {
   const initialValue = {
@@ -9,35 +9,23 @@ const FormTrial = () => {
     email: "",
     address: "",
     message: "",
+    phoneNumber: "",
   };
   const [formData, setFormData] = useState(initialValue);
   const [formValue, setFormValue] = useState({});
   const dispatch = useDispatch();
-  const postlist = useSelector((state) => state);
   const onSubmitHandler = async (e) => {
     e.preventDefault();
-    const response = await SecondDataApi(
-      "http://192.168.0.177:8000/api/v1/signup",
-      formData
-    );
+    const response = await SecondPostApi(formData);
     if (response.data) {
-      setFormData(initialValue);
+      setFormValue(response.json);
       alert("Done", "Something went correct!", "success");
     } else {
       alert("Oops", "Something went wrong!", "error");
     }
-    // if (
-    //   formData.name &&
-    //   formData.email &&
-    //   formData.address &&
-    //   formData.message
-    // ) {
-    //   console.log(response, "response");
-    // }
   };
 
   useEffect(() => {
-    setFormValue(formData);
     dispatch(postCallActionList(formData));
   }, []);
   return (
@@ -82,9 +70,21 @@ const FormTrial = () => {
                 placeholder="message"
                 value={formData.message}
               />
+              <input
+                onChange={(e) =>
+                  setFormData({ ...formData, phoneNumber: e.target.value })
+                }
+                type="text"
+                placeholder="message"
+                value={formData.phoneNumber}
+              />
               <button>Submit</button>
             </form>
           </div>
+          <h1>{formValue && formValue.name}</h1>
+          <h1>{formValue && formValue.email}</h1>
+          <h1>{formValue && formValue.message}</h1>
+          <h1>{formValue && formValue.address}</h1>
         </div>
       </div>
     </div>

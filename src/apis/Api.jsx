@@ -9,6 +9,7 @@ export const FirstpostAPI = async (data) => {
 export const SecondDataApi = async () => {
   return await axiosRequest("GET", `https://dummyjson.com/product/categories`);
 };
-export const SecondPostApi = async (url, data) => {
-  return await axiosRequest("POST", `${url}`, data);
+export const SecondPostApi = async (data) => {
+  console.log("datadatadata", data);
+  return await axiosRequest("POST", "https://httpbin.org/post", data);
 };
