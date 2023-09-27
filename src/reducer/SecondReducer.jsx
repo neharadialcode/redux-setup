@@ -1,4 +1,4 @@
-import { SECOND_ACTION_DATA } from "../actions/SecondGetAction";
+import { SECOND_ACTION_DATA } from "../action/Actions";
 
 const initialState = {
   data: {},

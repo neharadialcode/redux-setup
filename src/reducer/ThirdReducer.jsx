@@ -1,4 +1,4 @@
-import { POST_LIST_SIGNUP } from "../actions/SecondPostAction";
+import { POST_LIST_SIGNUP } from "../action/Actions";
 
 const initialState = {
   data: {},

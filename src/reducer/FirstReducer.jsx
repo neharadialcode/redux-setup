@@ -1,5 +1,5 @@
-import { FIRST_ACTION_DATA } from "../actions/FirstAction";
-import { POST_LIST } from "../actions/FirstPostAction";
+import { FIRST_ACTION_DATA } from "../action/Actions";
+import { POST_LIST } from "../action/Actions";
 
 const initialState = {
   data: {},
