@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { postCallActionList } from "../action/Actions";
+import { SecondDataApi } from "../apis/Api";
 
 const FormTrial = () => {
   const initialValue = {
@@ -11,20 +12,29 @@ const FormTrial = () => {
   };
   const [formData, setFormData] = useState(initialValue);
   const [formValue, setFormValue] = useState({});
-
-  const onSubmitHandler = (e) => {
-    e.preventDefault();
-    if (
-      formData.name &&
-      formData.email &&
-      formData.address &&
-      formData.message
-    ) {
-      alert("successfully sent");
-    }
-  };
   const dispatch = useDispatch();
   const postlist = useSelector((state) => state);
+  const onSubmitHandler = async (e) => {
+    e.preventDefault();
+    const response = await SecondDataApi(
+      "http://192.168.0.177:8000/api/v1/signup",
+      formData
+    );
+    if (response.data) {
+      setFormData(initialValue);
+      alert("Done", "Something went correct!", "success");
+    } else {
+      alert("Oops", "Something went wrong!", "error");
+    }
+    // if (
+    //   formData.name &&
+    //   formData.email &&
+    //   formData.address &&
+    //   formData.message
+    // ) {
+    //   console.log(response, "response");
+    // }
+  };
 
   useEffect(() => {
     setFormValue(formData);

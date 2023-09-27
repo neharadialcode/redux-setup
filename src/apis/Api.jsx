@@ -9,10 +9,6 @@ export const FirstpostAPI = async (data) => {
 export const SecondDataApi = async () => {
   return await axiosRequest("GET", `https://dummyjson.com/product/categories`);
 };
-export const SecondPostApi = async (data) => {
-  return await axiosRequest(
-    "POST",
-    `http://192.168.0.177:8000/api/v1/signup`,
-    data
-  );
+export const SecondPostApi = async (url, data) => {
+  return await axiosRequest("POST", `${url}`, data);
 };
