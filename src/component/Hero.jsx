@@ -29,8 +29,8 @@ const Hero = () => {
 
   return (
     <div>
-      <h1>API FIRST CONTENT</h1>
-      {firstApi.data && (
+      {/* <h1>API FIRST CONTENT</h1> */}
+      {/* {firstApi.data && (
         <div>
           <p>{firstApi.data.description && firstApi.data.description}</p>
           <p>
@@ -38,11 +38,11 @@ const Hero = () => {
               firstApi.data.images.map((obj) => <img src={obj} alt="obj" />)}
           </p>
         </div>
-      )}
-      <h1>API SECOND CONTENT</h1>
-      {secondApi && secondApi.length && (
+      )} */}
+      {/* <h1>API SECOND CONTENT</h1> */}
+      {/* {secondApi && secondApi.length && (
         <div>{secondApi && secondApi.map((obj) => <p>{obj}</p>)}</div>
-      )}
+      )} */}
       <h1>POST API CONTENT</h1>
       <p>{value.userId}</p>
       <p>{value.date}</p>
